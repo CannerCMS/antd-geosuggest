@@ -51,6 +51,12 @@ Default: `Search places`
 
 The input field will get this placeholder text.
 
+#### defaultValue
+Type: `Array<{key: string, label: string}>`
+Default: `undefined`
+
+The default value of the input.
+
 #### location
 Type: [`google.maps.LatLng`](https://developers.google.com/maps/documentation/javascript/reference#LatLng)
 Default: `null`

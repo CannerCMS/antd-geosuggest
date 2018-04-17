@@ -11,6 +11,7 @@ type Props = {
   offset?: number,
   radius?: number,
   types?: Array<string>,
+  defaultValue?: Options,
   minLength: number,
   multiple: boolean,
   onChange: (Array<ResultObj> => void)
@@ -19,10 +20,7 @@ type Props = {
 type State = {
   fetching: boolean,
   value: Options,
-  data: Array<{
-    text: string,
-    value: string
-  }>,
+  data: Options,
   disabled: boolean
 }
 
@@ -65,6 +63,14 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
     multiple: false
   }
 
+  componentDidMount() {
+    const {defaultValue} = this.props;
+
+    if (defaultValue && defaultValue.length > 0) {
+      this.setState({value: defaultValue})
+    }
+  }
+
   componentDidUpdate() {
     const {multiple} = this.props;
     const {value, disabled} = this.state;
@@ -102,8 +108,8 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
           const suggestions = suggestsGoogle || [];
           const data = suggestions.map(datum => {
             return {
-              text: datum.description,
-              value: datum.place_id
+              label: datum.description,
+              key: datum.place_id
             }
           })
 
@@ -181,7 +187,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
           onChange={this.handleChange}
           style={{width: "80%", marginRight: '10px'}}
         >
-          {data.map(d => <Option key={d.value}>{d.text}</Option>)}
+          {data.map(d => <Option key={d.key}>{d.label}</Option>)}
         </Select>
         <Button onClick={this.clearValue}>Clear</Button>
       </div>
