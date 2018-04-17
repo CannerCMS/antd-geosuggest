@@ -1,10 +1,11 @@
 # antd-geosuggest [![NPM version][npm-image]][npm-url]  [![Dependency Status][daviddm-image]][daviddm-url]
 > Antd based geo suggestion for Google maps places API
-> Credits: This library and APIs are inspired by [react-geosuggest](https://github.com/ubilabs/react-geosuggest)
 
 <img src="./docs/demo.png" width="500"/>
 
 ## Installation
+
+> Credits: This library and APIs are inspired by [react-geosuggest](https://github.com/ubilabs/react-geosuggest)
 
 ```sh
 $ npm install --save antd-geosuggest
