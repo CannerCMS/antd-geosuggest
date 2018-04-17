@@ -5,13 +5,13 @@ import debounce from 'lodash.debounce';
 const Option = Select.Option;
 
 type Props = {
-  placeholder: string,
+  placeholder?: string,
+  location?: any,
+  bounds?: any,
+  offset?: number,
+  radius?: number,
+  types?: Array<string>,
   minLength: number,
-  location: any,
-  bounds: any,
-  offset: number,
-  radius: number,
-  types: Array<string>,
   multiple: boolean,
   onChange: (Array<ResultObj> => void)
 }
@@ -60,7 +60,9 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
   }
 
   static defaultProps = {
-    placeholder: "Type and search for places"
+    placeholder: "Type and search for places",
+    minLength: 3,
+    multiple: false
   }
 
   componentDidUpdate() {
