@@ -1,0 +1,10 @@
+{
+  "generator-canner-react": {
+    "promptValues": {
+      "authorName": "chilijung",
+      "authorEmail": "chilijung@gmail.com",
+      "authorUrl": "",
+      "webpackExample": true
+    }
+  }
+}
