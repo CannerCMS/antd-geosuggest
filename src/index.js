@@ -30,9 +30,11 @@ type Options = Array<{
 }>
 
 type ResultObj = {
-  placeId: string,
+  key: string,
+  label: string,
   gmaps?: any,
-  location?: Object
+  lat?: number,
+  lng?: number
 }
 
 export default class AntdGeosuggest extends React.Component<Props, State> {
@@ -125,20 +127,20 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
     // Geocode the location using Google geocode API. In order to get location's latitude and longtitude.
     function promiseGeocode(singleSite) {
       return new Promise((resolve) => {
-        let newData: ResultObj = {placeId: singleSite.key};
+
         that.geocoder.geocode(
-          newData,
+          {placeId: singleSite.key},
           (results, status) => {
             // $FlowFixMe
+            const newData: ResultObj = singleSite;
+            // $FlowFixMe
             if (status === google.maps.GeocoderStatus.OK) {
-              var gmaps = results[0],
+              const gmaps = results[0],
                 location = gmaps.geometry.location;
     
               newData.gmaps = gmaps;
-              newData.location = {
-                lat: location.lat(),
-                lng: location.lng()
-              };
+              newData.lat = location.lat();
+              newData.lng = location.lng();
             }
             resolve(newData);
           }
