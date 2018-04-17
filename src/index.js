@@ -93,6 +93,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
     });
 
     this.setState({data: [], fetching: true}, () => {
+      // Get suggested locations from google map.
       this.autocompleteService.getPlacePredictions(
         options,
         suggestsGoogle => {
@@ -112,6 +113,8 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
   
   handleChange = (value: Options) => {
     const that = this;
+
+    // Geocode the location using Google geocode API. In order to get location's latitude and longtitude.
     function promiseGeocode(singleSite) {
       return new Promise((resolve) => {
         let newData: ResultObj = {placeId: singleSite.key};
@@ -135,6 +138,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
       })
     }
 
+    // Wait for all locations to finish geocoding, and call onChange function in the end.
     Promise.all(value.map(site => promiseGeocode(site))).then(result => {
       that.props.onChange(result);
     })
@@ -147,6 +151,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
   }
 
   clearValue = () => {
+    // reset value
     this.setState({
       data: [],
       value: [],
