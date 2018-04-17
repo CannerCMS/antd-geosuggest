@@ -10,7 +10,8 @@ class GeoDemo extends React.Component {
     this.state = {
       1: [],
       2: [],
-      3: []
+      3: [],
+      4: []
     }
   }
 
@@ -62,10 +63,10 @@ class GeoDemo extends React.Component {
             key: "ChIJ3-rat5G1bTkRfUnrwltwjwE",
             label: "FS Manasarovar, Sector 2, Mansarovar, Jaipur, Rajasthan"
           }]}
-          onChange={(result) => this.updateData(3, result)}/>
+          onChange={(result) => this.updateData(4, result)}/>
         <div style={inspectorStyle}>
           <h3>Result</h3>
-          <Inspector data={this.state[3]}/>
+          <Inspector data={this.state[4]}/>
         </div>
       </div>
     )
