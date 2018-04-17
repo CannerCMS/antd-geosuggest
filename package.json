@@ -1,6 +1,6 @@
 {
   "name": "antd-geosuggest",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Antd based geo suggestion for Google maps places API",
   "homepage": "",
   "author": {

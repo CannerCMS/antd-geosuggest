@@ -2,7 +2,7 @@
 > Antd based geo suggestion for Google maps places API
 > Credits: This library and APIs are inspired by [react-geosuggest](https://github.com/ubilabs/react-geosuggest)
 
-<img src="./docs/demo.png" width="700"/>
+<img src="./docs/demo.png" width="500"/>
 
 ## Installation
 
