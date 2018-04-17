@@ -5,6 +5,7 @@ import debounce from 'lodash.debounce';
 const Option = Select.Option;
 
 type Props = {
+  placeholder: string,
   minLength: number,
   location: any,
   bounds: any,
@@ -56,6 +57,10 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
     value: [],
     fetching: false,
     disabled: false
+  }
+
+  static defaultProps = {
+    placeholder: "Type and search for places"
   }
 
   componentDidUpdate() {
@@ -152,6 +157,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
 
   render() {
     const { fetching, data, value, disabled } = this.state;
+    const { placeholder } = this.props;
 
     return (
       <div>
@@ -161,7 +167,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
           labelInValue
           value={value}
           disabled={disabled}
-          placeholder="Type and search for a place"
+          placeholder={placeholder}
           notFoundContent={!disabled && (fetching ? <Spin size="small" /> : "No result")}
           filterOption={false}
           onSearch={this.fetchLocation}
