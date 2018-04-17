@@ -1,7 +1,7 @@
 {
   "name": "antd-geosuggest",
   "version": "0.0.0",
-  "description": "Antd based geo suggest",
+  "description": "Antd based geo suggestion for Google maps places API",
   "homepage": "",
   "author": {
     "name": "chilijung",
@@ -13,7 +13,9 @@
   ],
   "main": "lib/index.js",
   "keywords": [
-    ""
+    "CannerIO",
+    "antd",
+    "geosuggest"
   ],
   "devDependencies": {
     "babel-cli": "^6.14.0",

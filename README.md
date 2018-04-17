@@ -1,5 +1,5 @@
 # antd-geosuggest [![NPM version][npm-image]][npm-url]  [![Dependency Status][daviddm-image]][daviddm-url]
-> Antd based geo suggestion for Goole maps places API
+> Antd based geo suggestion for Google maps places API
 > Credits: This library and APIs are inspired by [react-geosuggest](https://github.com/ubilabs/react-geosuggest)
 
 ![demo](./docs/demo.png)
@@ -114,3 +114,7 @@ MIT © [chilijung]()
 [travis-url]: https://travis-ci.org/chilijung/antd-geosuggest
 [daviddm-image]: https://david-dm.org/chilijung/antd-geosuggest.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/chilijung/antd-geosuggest
+
+<a href="https://canner.io">
+  <img src="https://user-images.githubusercontent.com/26116324/37811196-a437d930-2e93-11e8-97d8-0653ace2a46d.png"/>
+</a>
