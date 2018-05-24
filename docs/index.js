@@ -45,8 +45,8 @@ class GeoDemo extends React.Component {
         <h1> Single selection with default value:</h1>
         <GeoSuggest
           defaultValue={[{
-            key: "Eiflj7DngaPmlrDljJfluILmlrDojorljYDmgJ3mupDot68yMzDlt7c",
-            label: "台灣新北市新莊區思源路230巷"
+            placeId: "Eiflj7DngaPmlrDljJfluILmlrDojorljYDmgJ3mupDot68yMzDlt7c",
+            address: "台灣新北市新莊區思源路230巷"
           }]}
           onChange={(result) => this.updateData(3, result)}/>
         <div style={inspectorStyle}>
@@ -57,11 +57,11 @@ class GeoDemo extends React.Component {
         <GeoSuggest
           multiple
           defaultValue={[{
-            key: "Eiflj7DngaPmlrDljJfluILmlrDojorljYDmgJ3mupDot68yMzDlt7c",
-            label: "台灣新北市新莊區思源路230巷"
+            placeId: "Eiflj7DngaPmlrDljJfluILmlrDojorljYDmgJ3mupDot68yMzDlt7c",
+            address: "台灣新北市新莊區思源路230巷"
           }, {
-            key: "ChIJ3-rat5G1bTkRfUnrwltwjwE",
-            label: "FS Manasarovar, Sector 2, Mansarovar, Jaipur, Rajasthan"
+            placeId: "ChIJ3-rat5G1bTkRfUnrwltwjwE",
+            address: "FS Manasarovar, Sector 2, Mansarovar, Jaipur, Rajasthan"
           }]}
           onChange={(result) => this.updateData(4, result)}/>
         <div style={inspectorStyle}>
