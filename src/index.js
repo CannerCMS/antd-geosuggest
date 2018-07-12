@@ -11,7 +11,7 @@ type Props = {
   offset?: number,
   radius?: number,
   types?: Array<string>,
-  defaultValue?: Options,
+  defaultValue?: Array<ResultObj>,
   minLength: number,
   multiple: boolean,
   onChange: (Array<ResultObj> => void)
@@ -19,8 +19,8 @@ type Props = {
 
 type State = {
   fetching: boolean,
-  value: Options,
-  data: Options,
+  value: Array<ResultObj>,
+  data: Array<ResultObj>,
   disabled: boolean
 }
 
@@ -30,8 +30,8 @@ type Options = Array<{
 }>
 
 type ResultObj = {
-  key: string,
-  label: string,
+  placeId: string,
+  address: string,
   gmaps?: any,
   lat?: number,
   lng?: number
@@ -110,8 +110,8 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
           const suggestions = suggestsGoogle || [];
           const data = suggestions.map(datum => {
             return {
-              label: datum.description,
-              key: datum.place_id
+              address: datum.description,
+              placeId: datum.place_id
             }
           })
 
@@ -123,13 +123,12 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
   
   handleChange = (value: Options) => {
     const that = this;
-
     // Geocode the location using Google geocode API. In order to get location's latitude and longtitude.
     function promiseGeocode(singleSite) {
       return new Promise((resolve) => {
 
         that.geocoder.geocode(
-          {placeId: singleSite.key},
+          {placeId: singleSite.placeId},
           (results, status) => {
             // $FlowFixMe
             const newData: ResultObj = singleSite;
@@ -149,12 +148,12 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
     }
 
     // Wait for all locations to finish geocoding, and call onChange function in the end.
-    Promise.all(value.map(site => promiseGeocode(site))).then(result => {
+    Promise.all(value.map(site => promiseGeocode({placeId: site.key, address: site.label}))).then(result => {
       that.props.onChange(result);
     })
     
     this.setState({
-      value,
+      value: ((value: any): Array<ResultObj>),
       data: [],
       fetching: false,
     });
@@ -173,14 +172,13 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
   render() {
     const { fetching, data, value, disabled } = this.state;
     const { placeholder } = this.props;
-
     return (
       <div>
         <Select
           ref={node => this.selection = node}
           mode="multiple"
           labelInValue
-          value={value}
+          value={value.map((v, i) => ({key: v.address || i, ...v}))}
           disabled={disabled}
           placeholder={placeholder}
           notFoundContent={!disabled && (fetching ? <Spin size="small" /> : "No result")}
@@ -189,7 +187,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
           onChange={this.handleChange}
           style={{width: "80%", marginRight: '10px'}}
         >
-          {data.map(d => <Option key={d.key}>{d.label}</Option>)}
+          {data.map(d => <Option key={d.placeId}>{d.address}</Option>)}
         </Select>
         <Button onClick={this.clearValue}>Clear</Button>
       </div>
