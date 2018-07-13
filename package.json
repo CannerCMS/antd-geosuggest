@@ -74,12 +74,12 @@
   ],
   "repository": "chilijung/antd-geosuggest",
   "peerDependencies": {
+    "antd": "^3.4.1",
     "react": "^0.14.0 || ^15.0.0 || 16.x",
     "react-dom": "^0.14.0 || ^15.0.0 || 16.x"
   },
   "license": "MIT",
   "dependencies": {
-    "antd": "^3.4.1",
     "lodash.debounce": "^4.0.8"
   }
 }
