@@ -178,7 +178,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
           ref={node => this.selection = node}
           mode="multiple"
           labelInValue
-          value={value.map((v, i) => ({key: v.address || i, ...v}))}
+          value={value.map((v, i) => ({key: v.address || i, label: v.address, ...v}))}
           disabled={disabled}
           placeholder={placeholder}
           notFoundContent={!disabled && (fetching ? <Spin size="small" /> : "No result")}
