@@ -33,7 +33,7 @@ Visit the [Google Developer Console](https://console.developers.google.com) to g
 ## Usage
 
 ```js
-import GeoSuggest from 'atnd-geosuggest';
+import GeoSuggest from 'antd-geosuggest';
 
 // Single selection 
 <GeoSuggest onChange={(result) => this.updateData(result)}/>
