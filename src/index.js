@@ -6,6 +6,7 @@ const Option = Select.Option;
 
 type Props = {
   placeholder?: string,
+  clearButtonText?: string,
   location?: any,
   bounds?: any,
   offset?: number,
@@ -61,6 +62,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
 
   static defaultProps = {
     placeholder: "Type and search for places",
+    clearButtonText:"Clear",
     minLength: 3,
     multiple: false
   }
@@ -171,7 +173,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
 
   render() {
     const { fetching, data, value, disabled } = this.state;
-    const { placeholder } = this.props;
+    const { placeholder, clearButtonText } = this.props;
     return (
       <div>
         <Select
@@ -189,7 +191,7 @@ export default class AntdGeosuggest extends React.Component<Props, State> {
         >
           {data.map(d => <Option key={d.placeId}>{d.address}</Option>)}
         </Select>
-        <Button onClick={this.clearValue}>Clear</Button>
+        <Button onClick={this.clearValue}>{clearButtonText}</Button>
       </div>
     );
   }
